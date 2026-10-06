@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!-- saved from url=(0036)https://resumen-en-un-clic.pazi.dev/ -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RESUMEN EN UN CLIC · Resume textos, imágenes y documentos</title>
+<meta name="description" content="Pega un texto o sube un PDF, un documento Word o una imagen y obtén un resumen en español. El procesamiento se hace en tu navegador.">
+<link rel="icon" href="./RESUMEN EN UN CLIC · Resume textos, imágenes y documentos_files/logo.png">
+<link rel="stylesheet" href="./RESUMEN EN UN CLIC · Resume textos, imágenes y documentos_files/styles.css">
+<!-- pazi-site-analytics:start --><script defer="" src="./RESUMEN EN UN CLIC · Resume textos, imágenes y documentos_files/site.js.descarga"></script><!-- pazi-site-analytics:end --><link type="text/css" rel="stylesheet" id="dark-mode-custom-link"><link type="text/css" rel="stylesheet" id="dark-mode-general-link"><style lang="en" type="text/css" id="dark-mode-custom-style"></style><style lang="en" type="text/css" id="dark-mode-native-style"></style><style lang="en" type="text/css" id="dark-mode-native-sheet"></style><script async="" src="./RESUMEN EN UN CLIC · Resume textos, imágenes y documentos_files/array.js.descarga"></script></head>
+<body>
+<header class="cab">
+  <img class="logo" src="./RESUMEN EN UN CLIC · Resume textos, imágenes y documentos_files/logo.png" alt="Logotipo de RESUMEN EN UN CLIC: un documento con un cursor ámbar" width="132" height="132">
+  <div>
+    <h1>Resume cualquier texto, PDF, Word o imagen</h1>
+    <p class="sub">Pega un texto o sube un archivo y obtén las ideas principales en segundos. Todo se procesa en tu navegador: tu contenido no se envía a ningún servidor.</p>
+  </div>
+</header>
+
+<main>
+<section class="tarjeta" aria-labelledby="t-entrada">
+  <h2 id="t-entrada" class="sr">Contenido a resumir</h2>
+  <div class="tabs" role="tablist">
+    <button role="tab" data-modo="texto" aria-selected="true">Pegar texto</button>
+    <button role="tab" data-modo="archivo" aria-selected="false">Subir archivo</button>
+  </div>
+
+  <div id="panel-texto">
+    <label for="entrada" class="sr">Texto a resumir</label>
+    <textarea id="entrada" rows="10" placeholder="Pega aquí el texto que quieres resumir…"></textarea>
+    <div id="contador" class="contador">0 / 300.000 caracteres</div>
+  </div>
+
+  <div id="panel-archivo" hidden="">
+    <label id="zona" class="zona" for="archivo">
+      <input id="archivo" type="file" accept=".txt,.md,.docx,.pdf,.png,.jpg,.jpeg,.webp,.bmp,.gif">
+      <strong>Arrastra un archivo aquí o haz clic para elegirlo</strong>
+      <span>TXT, MD, DOCX, PDF, PNG, JPG, WEBP, BMP, GIF</span>
+    </label>
+    <div id="archivo-info" class="archivo-info" hidden="">
+      <span id="archivo-nombre"></span>
+      <button type="button" id="quitar" class="link">Quitar</button>
+    </div>
+  </div>
+
+  <div class="acciones">
+    <label class="largo">Longitud del resumen
+      <select id="largo">
+        <option value="corto">Corto</option>
+        <option value="medio" selected="">Medio</option>
+        <option value="largo">Largo</option>
+      </select>
+    </label>
+    <button id="btn-resumir" class="primario" type="button">Resumir</button>
+  </div>
+
+  <div id="estado" class="estado" role="status" aria-live="polite" hidden="">
+    <div class="spin" aria-hidden="true"></div>
+    <div class="estado-t"><span id="estado-msg"></span><div class="pista"><div id="barra"></div></div></div>
+  </div>
+  <div id="error" class="error" role="alert" hidden=""></div>
+</section>
+
+<section id="resultado" class="tarjeta res" hidden="" aria-labelledby="t-res">
+  <div class="res-cab">
+    <h2 id="t-res">Resumen</h2>
+    <button id="copiar" type="button" class="secundario">Copiar resumen</button>
+  </div>
+  <p id="aviso" class="aviso" hidden=""></p>
+  <ul id="resumen" class="resumen"></ul>
+  <div id="claves-bloque"><h3>Palabras clave</h3><div id="claves" class="claves"></div></div>
+  <p id="meta" class="meta"></p>
+  <details><summary>Ver el texto extraído</summary><pre id="texto-extraido"></pre></details>
+</section>
+
+<section class="tarjeta info" aria-labelledby="t-info">
+  <h2 id="t-info">Formatos y límites verificados</h2>
+  <table>
+    <thead><tr><th>Tipo</th><th>Formatos</th><th>Límite</th></tr></thead>
+    <tbody>
+      <tr><td>Texto pegado</td><td>Cualquier texto en español</td><td>300.000 caracteres</td></tr>
+      <tr><td>Texto</td><td>.txt, .md</td><td>20 MB</td></tr>
+      <tr><td>Word</td><td>.docx</td><td>20 MB</td></tr>
+      <tr><td>PDF</td><td>.pdf con texto, o escaneado (se reconoce con OCR)</td><td>20 MB · hasta 300 páginas con texto y 60 escaneadas</td></tr>
+      <tr><td>Imagen</td><td>.png, .jpg/.jpeg, .webp, .bmp, .gif (reconocimiento de texto en español)</td><td>15 MB</td></tr>
+    </tbody>
+  </table>
+  <h3>Qué hace y qué no</h3>
+  <ul class="notas">
+    <li>El resumen es <strong>extractivo</strong>: selecciona las frases más importantes del contenido original; no reescribe ni inventa texto.</li>
+    <li>De las imágenes se resume el <strong>texto que aparece</strong> (capturas, fotos de documentos, carteles). No describe fotografías sin texto.</li>
+    <li>Funciona mejor con texto en español. Los archivos .doc antiguos, hojas de cálculo, presentaciones y PDF con contraseña no están soportados.</li>
+    <li>La primera vez que reconoces una imagen se descarga el motor de OCR (unos 6 MB); después queda en la caché del navegador.</li>
+  </ul>
+</section>
+</main>
+
+<footer>RESUMEN EN UN CLIC · Tu contenido se procesa localmente en tu dispositivo.</footer>
+<script type="text/javascript" crossorigin="anonymous" src="./RESUMEN EN UN CLIC · Resume textos, imágenes y documentos_files/surveys.js.descarga"></script><script type="text/javascript" crossorigin="anonymous" src="./RESUMEN EN UN CLIC · Resume textos, imágenes y documentos_files/posthog-recorder.js.descarga"></script><script type="text/javascript" crossorigin="anonymous" src="./RESUMEN EN UN CLIC · Resume textos, imágenes y documentos_files/config.js.descarga"></script><script type="module" src="./RESUMEN EN UN CLIC · Resume textos, imágenes y documentos_files/app.js.descarga"></script>
+
+
+<span id="PING_CONTENT_PUSH_NOTIFICATION" style="display: none;"></span></body></html>
